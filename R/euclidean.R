@@ -14,7 +14,7 @@
 #' euclidean(123612, 13892347912)
 
 euclidean <- function(a, b) {
-    stopifnot(
+    stopifnot( # checks for numerical scalar arguments being integers
         is.numeric(a),
         is.numeric(b),
         length(a) == 1,
