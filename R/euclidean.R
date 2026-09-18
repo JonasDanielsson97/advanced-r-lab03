@@ -13,10 +13,11 @@ euclidean <- function(a, b) {
     a <- abs(a)
     b <- abs(b)
 
+# Implementing the Euclidean algorithm to find the greatest common divisor (GCD)
     while (b != 0) {
-        remainder <- a %% b
-        a <- b
-        b <- remainder
+        temp <- b
+        b <- a %% b
+        a <- temp
     }
     return(a)
 }
