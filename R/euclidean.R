@@ -1,3 +1,17 @@
+#' Greatest common divisor using the Euclidean algorithm
+#'
+#' Computes the greatest common divisor of two integers using
+#' the Euclidean algorithm.
+#'
+#' @param a A numeric scalar representing an integer.
+#' @param b A numeric scalar representing an integer.
+#' @return The greatest common divisor of `a` and `b`.
+#' @references
+#' https://en.wikipedia.org/wiki/Euclidean_algorithm
+#' @export
+#' @examples
+#' euclidean(100, 1000)
+#' euclidean(123612, 13892347912)
 
 euclidean <- function(a, b) {
     stopifnot(
