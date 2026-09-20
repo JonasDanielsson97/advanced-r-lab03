@@ -5,6 +5,7 @@
 #' v1, v2 = from and to nodes respectively (integers)
 #' w = weight of edge
 #' @param init_node (integer, present in graph)
+#' @export
 #'
 #' @returns vector with the shortest distances from init_node to all nodes
 #'
