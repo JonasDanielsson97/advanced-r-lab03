@@ -1,1 +1,106 @@
 # function dijkstra()
+
+
+dijkstra1 <- function(graph, init_node){
+
+  nodes <- data.frame(
+    node = unique(graph$v1),
+    dist = Inf,
+    prev = NA_integer_,
+    visited = FALSE)
+
+  nodes$dist[nodes$node == init_node] <- 0
+
+  while (any(!nodes$visited)){
+    unvisited <- nodes[!nodes$visited, ]
+    focus_node <- unvisited$node[which.min(unvisited$dist)]
+
+    focus_neighbors <- graph$v2[graph$v1 == focus_node]
+
+    for (neighbor in focus_neighbors) {
+      new_dist <-
+        nodes$dist[nodes$node==focus_node] + graph$w[graph$v1==focus_node & graph$v2==neighbor]
+      if (new_dist < nodes$dist[nodes$node == neighbor]) {
+        nodes$dist[nodes$node == neighbor] <- new_dist
+        nodes$prev[nodes$node == neighbor] <- focus_node
+      }
+    }
+    nodes$visited[nodes$node == focus_node] <- TRUE
+  }
+
+  return(nodes$dist)
+}
+
+dijkstra2 <- function(graph, init_node){
+
+  nodes <-
+    graph |>
+    dplyr::select(v1) |>
+    dplyr::distinct() |>
+    dplyr::rename(node = v1) |>
+    dplyr::mutate(dist =  Inf,
+                  prev= NA_integer_,
+                  visited = FALSE)
+
+  nodes <-
+    nodes |>
+    dplyr::mutate(dist =
+                    ifelse(node==init_node, 0, dist))
+
+  focus_node <-
+    nodes |>
+    dplyr::filter(!visited) |>
+    dplyr::slice_min(dist, n=1, with_ties = FALSE) |>
+    dplyr::pull(node)
+
+  while (any(!nodes$visited) & any(nodes$dist != Inf)){
+    focus_node <-
+      nodes |>
+      dplyr::filter(!visited) |>
+      dplyr::slice_min(dist, n=1, with_ties = FALSE) |>
+      dplyr::pull(node)
+
+    focus_neighbors <-
+      graph |>
+      dplyr::filter(v1 == focus_node) |>
+      dplyr::select(v2) |>
+      dplyr::pull()
+
+
+
+    for (neighbor in focus_neighbors) {
+      new_dist <-
+        nodes |>
+        dplyr::filter(node==focus_node) |>
+        dplyr::pull(dist) +
+        graph |>
+        dplyr::filter(v1==focus_node & graph$v2==neighbor) |>
+        dplyr::pull(w)
+
+      nodes <- nodes |>
+        dplyr::mutate(
+          update = node == neighbor & new_dist < dist,
+          dist = dplyr::if_else(update, new_dist, dist),
+          prev = dplyr::if_else(update, focus_node, prev)
+        ) |>
+        dplyr::select(-update)
+
+    }
+
+    nodes <-
+      nodes |>
+      dplyr::mutate(visited = (visited | (node == focus_node)))
+
+  }
+
+  node_distances <-
+    nodes |>
+    dplyr::pull(dist)
+
+  return(node_distances)
+}
+
+# wiki_graph <-
+# data.frame(v1=c(1,1,1,2,2,2,3,3,3,3,4,4,4,5,5,6,6,6),
+#            v2=c(2,3,6,1,3,4,1,2,4,6,2,3,5,4,6,1,3,5),
+#            w=c(7,9,14,7,10,15,9,10,11,2,15,11,6,6,9,14,2,9))
