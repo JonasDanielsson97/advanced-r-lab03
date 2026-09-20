@@ -26,7 +26,7 @@ dijkstra <- function(graph, init_node){
 
   nodes$dist[nodes$node == init_node] <- 0
 
-  while (any(!nodes$visited) & any(nodes$dist != Inf)){ # check second test
+  while (any(!nodes$visited) & any(nodes$dist[!nodes$visited] != Inf)) {
     unvisited <- nodes[!nodes$visited, ]
     focus_node <- unvisited$node[which.min(unvisited$dist)]
 
