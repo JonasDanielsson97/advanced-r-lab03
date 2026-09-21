@@ -12,6 +12,9 @@ A data frame with 3 columns:
   \item{w}{Weight of the edge (numeric).}
 }
 }
+\source{
+\url{https://en.wikipedia.org/wiki/Dijkstra's_algorithm}
+}
 \usage{
 wiki_graph
 }
