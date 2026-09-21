@@ -8,4 +8,5 @@
 #'   \item{v2}{To node (integer).}
 #'   \item{w}{Weight of the edge (numeric).}
 #' }
+#' @source \url{https://en.wikipedia.org/wiki/Dijkstra's_algorithm}
 "wiki_graph"
