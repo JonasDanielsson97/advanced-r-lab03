@@ -1,5 +1,5 @@
 #' Dijkstra algorithm - shortest node-to-node distances (base R)
-#' Ref: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+#' Ref: https://en.wikipedia.org/wiki/Dijkstra\%27s_algorithm
 #' @param graph
 #' data frame with three variables:
 #' v1, v2 = from and to nodes respectively (integers)

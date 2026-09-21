@@ -11,7 +11,7 @@ Authors@R: c(
     person(
       "Kerstin", "Arbring",
       email = "kerar739@student.liu.se",
-      role = c("aut", "cre")
+      role = c("aut")
     )
   )
 Description: Implementation of Dijkstra's algorithm and Euclidean distance calculation.

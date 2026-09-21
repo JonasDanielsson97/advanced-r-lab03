@@ -3,7 +3,7 @@
 \name{dijkstra}
 \alias{dijkstra}
 \title{Dijkstra algorithm - shortest node-to-node distances (base R)
-Ref: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm}
+Ref: https://en.wikipedia.org/wiki/Dijkstra\%27s_algorithm}
 \usage{
 dijkstra(graph, init_node)
 }
@@ -19,5 +19,5 @@ vector with the shortest distances from init_node to all nodes
 }
 \description{
 Dijkstra algorithm - shortest node-to-node distances (base R)
-Ref: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+Ref: https://en.wikipedia.org/wiki/Dijkstra\%27s_algorithm
 }
