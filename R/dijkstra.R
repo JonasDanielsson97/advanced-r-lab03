@@ -1,10 +1,11 @@
 #' Dijkstra algorithm - shortest node-to-node distances (base R)
-#' Ref: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+#' Ref: https://en.wikipedia.org/wiki/Dijkstra\%27s_algorithm
 #' @param graph
 #' data frame with three variables:
 #' v1, v2 = from and to nodes respectively (integers)
 #' w = weight of edge
 #' @param init_node (integer, present in graph)
+#' @export
 #'
 #' @returns vector with the shortest distances from init_node to all nodes
 #'
@@ -25,7 +26,7 @@ dijkstra <- function(graph, init_node){
 
   nodes$dist[nodes$node == init_node] <- 0
 
-  while (any(!nodes$visited) & any(nodes$dist != Inf)){ # check second test
+  while (any(!nodes$visited) & any(nodes$dist[!nodes$visited] != Inf)) {
     unvisited <- nodes[!nodes$visited, ]
     focus_node <- unvisited$node[which.min(unvisited$dist)]
 
