@@ -5,7 +5,7 @@
 [![R-CMD-check](https://github.com/JonasDanielsson97/advanced-r-lab03/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JonasDanielsson97/advanced-r-lab03/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of lab03 is to ...
+The goal of lab03 is to implement and document the Euclidean algoritm and Dijkstra's shortest path algoritm in an R package.
 
 ## Installation
 
@@ -22,6 +22,9 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(lab03)
-## basic example code
+
+euclidean(100, 1000)
+
+dijkstra(wiki_graph, 1)
 ```
 
