@@ -172,7 +172,7 @@ dijkstra_full <- function(graph, init_node){
 
   nodes$dist[nodes$node == init_node] <- 0
 
-  while (any(!nodes$visited)){
+  while (any(!nodes$visited) & any(nodes$dist[!nodes$visited] != Inf)) {
     unvisited <- nodes[!nodes$visited, ]
     focus_node <- unvisited$node[which.min(unvisited$dist)]
 
@@ -202,5 +202,9 @@ dijkstra_full <- function(graph, init_node){
       }
     nodes$path[nodes$node == node] <- list(path_walk)
   }
+
+  setNames(nodes$dist, nodes$node)
+  nodes <- nodes[-4]
+
   return(nodes)
 }
